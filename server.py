@@ -213,18 +213,24 @@ def assess_response(learner_id: str, question: str, answer: str) -> str:
         return err
     a = (answer or "").strip()
     q = (question or "").strip()
+    al = a.lower()
     score = 0
     notes = []
-    if len(a) < 5:
+    if len(a) < 10:
         notes.append("Answer is too short to assess meaningfully.")
     else:
-        score += 40
+        score += 30
         notes.append("Answer has substance.")
-    if q and any(w in a.lower() for w in q.lower().split() if len(w) > 4):
-        score += 30
+    code_markers = ("for ", "while ", "print(", "def ", "=", ":")
+    if any(m in al for m in code_markers):
+        score += 25
+        notes.append("Includes runnable code, not just prose.")
+    q_terms = [w for w in q.lower().split() if len(w) > 3]
+    if q_terms and any(w in al for w in q_terms):
+        score += 25
         notes.append("Addresses the question's key terms.")
-    if "\n" in a or len(a) > 120:
-        score += 30
+    if "\n" in a or len(a) > 80:
+        score += 20
         notes.append("Shows reasoning or elaboration.")
     score = min(100, score)
     next_step = (
