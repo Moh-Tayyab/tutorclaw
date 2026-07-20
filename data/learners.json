@@ -1,0 +1,24 @@
+{
+  "test123": {
+    "name": "Aisha",
+    "topic": "python-basics",
+    "tier": "free",
+    "progress": {
+      "variables": {
+        "score": 90,
+        "completed": true,
+        "updated_at": "2026-07-20T11:05:28.562879+00:00"
+      }
+    },
+    "exchanges_today": 0,
+    "registered_at": "2026-07-20T11:05:28.546447+00:00"
+  },
+  "8252772322": {
+    "name": "Tayyab",
+    "topic": "python-basics",
+    "tier": "free",
+    "progress": {},
+    "exchanges_today": 0,
+    "registered_at": "2026-07-20T11:16:46.471633+00:00"
+  }
+}
